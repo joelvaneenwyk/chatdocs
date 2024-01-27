@@ -1,0 +1,21 @@
+# Custom Dictionary Words
+argilla
+chromadb
+cuda
+CUDA
+duckdb
+enex
+epub
+ggml
+GGML
+ggmlv
+GGUF
+gptq
+GPTQ
+hkunlp
+kwargs
+pydantic
+pypandoc
+Ravindra
+tqdm
+typer
