@@ -1,16 +1,27 @@
+<!-- markdownlint-disable no-inline-html -->
+
 # [ChatDocs](https://github.com/marella/chatdocs) [![PyPI](https://img.shields.io/pypi/v/chatdocs)](https://pypi.org/project/chatdocs/) [![tests](https://github.com/marella/chatdocs/actions/workflows/tests.yml/badge.svg)](https://github.com/marella/chatdocs/actions/workflows/tests.yml)
 
 Chat with your documents offline using AI. No data leaves your system. Internet connection is only required to install the tool and download the AI models. It is based on [PrivateGPT](https://github.com/imartinez/privateGPT) but has more features.
 
 ![Web UI](https://github.com/marella/chatdocs/raw/main/docs/demo.png)
 
-**Contents**
+## Contents
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [GPU](#gpu)
+- [ChatDocs](#chatdocs--)
+  - [Contents](#contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Configuration](#configuration)
+    - [Embeddings](#embeddings)
+    - [CTransformers](#ctransformers)
+    - [🤗 Transformers](#-transformers)
+  - [GPU](#gpu)
+    - [Embeddings (CUDA)](#embeddings-cuda)
+    - [CTransformers (CUDA)](#ctransformers-cuda)
+    - [🤗 Transformers (CUDA)](#-transformers-cuda)
+  - [License](#license)
 
 ## Features
 
@@ -73,7 +84,7 @@ Chat with your documents using:
 chatdocs ui
 ```
 
-Open http://localhost:5000 in your browser to access the web UI.
+Open <http://localhost:5000> in your browser to access the web UI.
 
 It also has a nice command-line interface:
 
@@ -151,7 +162,7 @@ pip install chatdocs[gptq]
 
 ## GPU
 
-### Embeddings
+### Embeddings (CUDA)
 
 To enable GPU (CUDA) support for the embeddings model, add the following to your `chatdocs.yml`:
 
@@ -163,7 +174,7 @@ embeddings:
 
 You may have to reinstall PyTorch with CUDA enabled by following the instructions [here](https://pytorch.org/get-started/locally/).
 
-### CTransformers
+### CTransformers (CUDA)
 
 To enable GPU (CUDA) support for the CTransformers (GGML/GGUF) model, add the following to your `chatdocs.yml`:
 
@@ -179,7 +190,7 @@ You may have to install the CUDA libraries using:
 pip install ctransformers[cuda]
 ```
 
-### 🤗 Transformers
+### 🤗 Transformers (CUDA)
 
 To enable GPU (CUDA) support for the 🤗 Transformers model, add the following to your `chatdocs.yml`:
 
