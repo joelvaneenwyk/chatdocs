@@ -25,7 +25,7 @@ Chat with your documents offline using AI. No data leaves your system. Internet 
 <summary><strong>Show supported document types</strong></summary><br>
 
 | Extension       | Format                         |
-| :-------------- | :----------------------------- |
+|:----------------|:-------------------------------|
 | `.csv`          | CSV                            |
 | `.docx`, `.doc` | Word Document                  |
 | `.enex`         | EverNote                       |
