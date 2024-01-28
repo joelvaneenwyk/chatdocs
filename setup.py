@@ -1,6 +1,6 @@
 """Setup script for 'chatdocs' package."""
 
-from setuptools import setup  # type: ignore[reportMissingModuleSource]  # pylint: disable=import-error
+from setuptools import setup  # type: ignore  # pylint: disable=import-error
 
 with open("README.md", 'r', encoding='utf8') as f:
     long_description = f.read()
