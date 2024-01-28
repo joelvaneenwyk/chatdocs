@@ -1,25 +1,27 @@
-from setuptools import setup
+"""Setup script for 'chatdocs' package."""
 
-with open("README.md") as f:
+from setuptools import setup  # type: ignore[reportMissingModuleSource]  # pylint: disable=import-error
+
+with open("README.md", 'r', encoding='utf8') as f:
     long_description = f.read()
 
-name = "chatdocs"
+PROJECT_NAME = "chatdocs"
 
 setup(
-    name=name,
+    name=PROJECT_NAME,
     version="0.2.6",
     description="Chat with your documents offline using AI.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Ravindra Marella",
     author_email="mv.ravindra007@gmail.com",
-    url="https://github.com/marella/{}".format(name),
+    url=f"https://github.com/marella/{PROJECT_NAME}",
     license="MIT",
-    packages=[name],
-    package_data={name: ["data/chatdocs.yml", "data/index.html"]},
+    packages=[PROJECT_NAME],
+    package_data={PROJECT_NAME: ["data/chatdocs.yml", "data/index.html"]},
     entry_points={
         "console_scripts": [
-            f"{name} = {name}.main:app",
+            f"{PROJECT_NAME} = {PROJECT_NAME}.main:app",
         ],
     },
     install_requires=[
@@ -70,5 +72,5 @@ setup(
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    keywords="{} ctransformers transformers langchain chroma ai llm".format(name),
+    keywords=f"{PROJECT_NAME} ctransformers transformers langchain chroma ai llm",
 )
