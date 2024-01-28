@@ -1,11 +1,11 @@
 version: "0.2"
 ignorePaths: []
 dictionaryDefinitions:
-  - name: custom-dictionary
-    path: ./.cspell/custom-dictionary.txt
+  - name: chatdocs-dictionary
+    path: ./.cspell/chatdocs-dictionary.txt
     addWords: true
 dictionaries:
-  - custom-dictionary
+  - chatdocs-dictionary
 words: []
 ignoreWords: []
 import: []
