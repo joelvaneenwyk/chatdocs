@@ -1,6 +1,7 @@
 # Custom Dictionary Words
 argilla
 chromadb
+cmds
 cuda
 CUDA
 duckdb

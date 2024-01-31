@@ -10,7 +10,7 @@ vars:
   PY_EXE_PATH: '{{if eq .OS "Windows_NT"}}C:/Windows/py.exe{{end}}'
   PY: '{{if eq .OS "Windows_NT"}}"{{fromSlash .PY_EXE_PATH}}" -3{{else}}python3{{end}}'
   PIP: '{{if eq .OS "Windows_NT"}}"{{fromSlash .PY_EXE_PATH}}" -3 -m pip{{else}}pip3{{end}}'
-  PROJECT_DIR: "{{.USER_WORKING_DIR}}"
+  PROJECT_DIR: "{{.TASKFILE_DIR}}"
   KILL: '{{if eq .OS "Windows_NT"}}powershell -NoProfile -Command Stop-Process -Force -EV Err -EA SilentlyContinue -Name{{else}}pkill -f{{end}}'
   SHELL: '{{if eq .OS "Windows_NT"}}c -NoProfile -Command "{{else}}sh -c "{{end}}'
   VENV_PATH: "{{.PROJECT_DIR}}/.venv"
@@ -18,11 +18,28 @@ vars:
   VENV_PYTHON: '{{if eq .OS "Windows_NT"}}{{.VENV_PATH}}/Scripts/python.exe{{else}}{{.VENV_PATH}}/Scripts/activate{{end}}'
   VENV_PIP: '{{if eq .OS "Windows_NT"}}{{.VENV_PATH}}/Scripts/pip.exe{{else}}{{.VENV_PATH}}/Scripts/pip3{{end}}'
   VENV_PY: '{{if eq .OS "Windows_NT"}}"{{fromSlash .CMD}}" call /D /C "{{fromSlash .VENV_ACTIVATE_PATH}}" && "{{fromSlash .VENV_PYTHON}}"{{end}}'
+  SYSTEM_PATH: ""
 
 tasks:
   default:
+    deps: [init-venv]
+    vars:
+      EXAMPLE_DOCS: '"{{.PROJECT_DIR}}/examples/documents/state_of_the_union.txt'
+    cmds:
+      - cmd: "{{.VENV_PY}} -m pip install .[gptq,test]"
+        dir: "{{.PROJECT_DIR}}"
+      - cmd: "{{.VENV_PY}} -m chatdocs download"
+        dir: "{{.PROJECT_DIR}}"
+      - cmd: "{{.VENV_PY}} -m chatdocs add {{.EXAMPLE_DOCS}}"
+        dir: "{{.PROJECT_DIR}}"
+    silent: false
+
+  init-venv:
     cmds:
       - cmd: '{{.PY}} -m venv "{{fromSlash .VENV_PATH}}"'
         ignore_error: true
+      - "{{.VENV_PY}} -m pip install --upgrade pip"
+
+  install-requirements:
+    cmds:
       - "{{.VENV_PY}} -m pip install -r requirements.txt"
-    silent: false
